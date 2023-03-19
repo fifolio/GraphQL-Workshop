@@ -3,17 +3,13 @@ const app = express();
 const PORT = 3000;
 
 const { ApolloServer, gql } = require("apollo-server-express");
+const resolvers = require("./resolvers");
 
 const typeDefs = gql`
   type Query {
     doesItWork: Boolean!
   }
 `;
-const resolvers = {
-  Query: {
-    doesItWork: () => true,
-  },
-};
 
 async function startServer() {
   const server = new ApolloServer({
