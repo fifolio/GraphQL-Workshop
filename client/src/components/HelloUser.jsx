@@ -13,11 +13,12 @@ const QUERY = gql`
   }
 `;
 
-export default function HelloUser() {
+export default function HelloUser(props) {
+  const { name } = props;
   const { loading, error, data } = useQuery(QUERY, {
     variables: {
-        username: "Bobby Ax"
-    }
+      username: name,
+    },
   });
   return (
     <>

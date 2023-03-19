@@ -18,7 +18,7 @@ function App() {
       {/* Provide the Client to all my application */}
       <ApolloProvider client={client}>
         <Hello />
-        <HelloUser />
+        <HelloUser name="Jemmy" />
       </ApolloProvider>
     </div>
   );
