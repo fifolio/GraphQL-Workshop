@@ -1,4 +1,4 @@
-// Import and Setup the node server using (Express) framework
+// Import and Setup the (Express) framework
 const express = require("express");
 const port = 3000;
 // Import Apollo Server & GQL
@@ -21,13 +21,15 @@ const resolvers = {
 
 async function startServer() {
   const app = express();
-  // make a new object from ApolloServer Class called "Server" that takes the custom schema and resolve functions been defined
+  // make a new object from ApolloServer Class called "Server" that takes the custom schema and resolve functions that been defined
   const server = new ApolloServer({
     typeDefs,
     resolvers,
   });
 
   await server.start();
+
+  // This code appears to be using the Apollo Server library to apply middleware to an existing Express application (app).
   server.applyMiddleware({ app });
 
   app.listen(port, () => {
