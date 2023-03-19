@@ -1,6 +1,7 @@
 import "./App.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import Hello from "./components/Hello";
+import HelloUser from "./components/HelloUser";
 
 // creates a new object of the "ApolloClient" class and sets it up for use in a React application.
 // An object is passed to the constructor of the "ApolloClient" class with two properties:
@@ -17,6 +18,7 @@ function App() {
       {/* Provide the Client to all my application */}
       <ApolloProvider client={client}>
         <Hello />
+        <HelloUser />
       </ApolloProvider>
     </div>
   );

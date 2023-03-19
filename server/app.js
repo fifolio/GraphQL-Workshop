@@ -17,9 +17,11 @@ const resolvers = {
     hello: () => {
       return "hello from Danial";
     },
+    // 1) the parent argument refers to the parent object of the field being resolved. Since helloWithName is defined on the Query type, the parent argument will be the root Query object.
+    // 2) argument args is an object containing any arguments passed to the resolver, in this case the name argument.
     helloWithName: (parent, args) => {
       const { name } = args;
-      return `Hello ${name}`;
+      return `Hello ${name} from server`;
     },
   },
 };

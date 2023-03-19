@@ -25,3 +25,9 @@ ApolloProvider is a React component that allows you to connect your React applic
 # What is InMemoryCache
 
 InMemoryCache is a caching implementation provided by Apollo Client. It is used to store the results of GraphQL queries and mutations in memory so that they can be quickly retrieved and reused without having to make another network request. InMemoryCache also provides a range of features, such as query normalization and data de-duplication, to ensure that your application's data is consistent and up-to-date. It can be configured to work with a variety of storage systems, such as local storage or IndexedDB, to provide persistent caching.
+
+# GraphQL resolver arguments
+
+> the args parameter is used to access the arguments passed to a particular field in a GraphQL query. You would use it in resolver functions where the data returned by the field depends on the arguments passed in the query.
+
+> The parent parameter is used when you need to access data from the parent object of the current field being resolved. Whether or not you need to use it depends on the structure of your schema and the data you're trying to access.
