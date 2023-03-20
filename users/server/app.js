@@ -11,6 +11,9 @@ async function startServer() {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: {
+      users,
+    },
   });
 
   await server.start();
