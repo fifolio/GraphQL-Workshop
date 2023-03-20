@@ -11,9 +11,21 @@ module.exports = {
     },
     getUser: (parent, args, models) => {
       const { users } = models;
-      // const { id } = args;
-      console.log(args);
-      return args;
+      const { id } = args;
+      const userNotFound = {
+        id: 323,
+        userName: "Not Found",
+        firstName: "Not Found",
+        lastName: "Not Found",
+        favNumber: -1,
+        isActive: false,
+      };
+      const user = users.find((u) => u.id == id);
+      if (user) {
+        return user;
+      } else {
+        return userNotFound;
+      }
     },
   },
 };
