@@ -9,5 +9,11 @@ module.exports = {
       console.log(users);
       return users;
     },
+    getUser: (parent, args, models) => {
+      const { users } = models;
+      // const { id } = args;
+      console.log(args);
+      return args;
+    },
   },
 };

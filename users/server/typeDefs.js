@@ -5,7 +5,7 @@ module.exports = gql`
     doesItWork: Boolean!
     getAllUsers: [User!]!
     # The following query will accept (id with type ID) and return User object (that already defined below)
-    getUser: (id: ID!): User!
+    getUser(id: ID!): User!
   }
   type User {
     id: ID!
