@@ -7,6 +7,16 @@ module.exports = gql`
     # The following query will accept (id with type ID) and return User object (that already defined below)
     getUser(id: ID!): User!
   }
+  type Mutation {
+    addUser(
+      id: ID!
+      userName: String!
+      firstName: String!
+      lastName: String!
+      favNumber: Int!
+      isActive: Boolean!
+    ): Boolean!
+  }
   type User {
     id: ID!
     userName: String!

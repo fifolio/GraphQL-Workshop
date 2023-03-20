@@ -13,7 +13,7 @@ module.exports = {
       const { users } = models;
       const { id } = args;
       const userNotFound = {
-        id: 323,
+        id: -1,
         userName: "Not Found",
         firstName: "Not Found",
         lastName: "Not Found",
@@ -26,6 +26,22 @@ module.exports = {
       } else {
         return userNotFound;
       }
+    },
+  },
+  Mutation: {
+    addUser: (parent, args, models) => {
+      const { users } = models;
+      const { id, userName, firstName, lastName, favNumber, isActive } = args;
+      const newUser = {
+        id,
+        userName,
+        firstName,
+        lastName,
+        favNumber,
+        isActive,
+      };
+      users.push(newUser);
+      return true;
     },
   },
 };
