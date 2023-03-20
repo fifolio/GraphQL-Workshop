@@ -11,7 +11,6 @@ module.exports = {
     },
     getUser: (parent, args, models) => {
       const { users } = models;
-      console.log(users);
       const { id } = args;
       const userNotFound = {
         id: -1,
@@ -43,6 +42,17 @@ module.exports = {
       };
       users.push(newUser);
       return true;
+    },
+    removeUser: (parent, args, models) => {
+      const { users } = models;
+      const { id } = args;
+      const index = users.findIndex((u) => u.id === Number(id));
+      if (index > -1) {
+        users.splice(index, 1);
+        return true;
+      } else {
+        return false;
+      }
     },
   },
 };
