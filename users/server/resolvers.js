@@ -1,3 +1,12 @@
+const userNotFound = {
+  id: -1,
+  userName: "Not Found",
+  firstName: "Not Found",
+  lastName: "Not Found",
+  favNumber: -1,
+  isActive: false,
+};
+
 module.exports = {
   Query: {
     doesItWork: () => true,
@@ -12,14 +21,6 @@ module.exports = {
     getUser: (parent, args, models) => {
       const { users } = models;
       const { id } = args;
-      const userNotFound = {
-        id: -1,
-        userName: "Not Found",
-        firstName: "Not Found",
-        lastName: "Not Found",
-        favNumber: -1,
-        isActive: false,
-      };
       const user = users.find((u) => u.id == id);
       if (user) {
         return user;
@@ -52,6 +53,22 @@ module.exports = {
         return true;
       } else {
         return false;
+      }
+    },
+    editUser: (parent, args, models) => {
+      const { users } = models;
+      const { id, userName, firstName, lastName, favNumber, isActive } = args;
+      const index = users.findIndex((u) => u.id === Number(id));
+      if (index > -1) {
+        const user = users[index];
+        user.userName = userName || user.userName;
+        user.firstName = firstName || user.firstName;
+        user.lastName = lastName || user.lastName;
+        user.favNumber = favNumber || user.favNumber;
+        user.isActive = isActive || user.isActive;
+        return user;
+      } else {
+        return userNotFound;
       }
     },
   },
