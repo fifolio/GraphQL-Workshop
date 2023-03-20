@@ -11,6 +11,7 @@ module.exports = {
     },
     getUser: (parent, args, models) => {
       const { users } = models;
+      console.log(users);
       const { id } = args;
       const userNotFound = {
         id: -1,
@@ -33,7 +34,7 @@ module.exports = {
       const { users } = models;
       const { id, userName, firstName, lastName, favNumber, isActive } = args;
       const newUser = {
-        id,
+        id: Number(id),
         userName,
         firstName,
         lastName,
