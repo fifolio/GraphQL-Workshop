@@ -27,6 +27,14 @@ tr:nth-child(even) {
   color: #353535;
 }
 
+.Active {
+  color: rgb(0, 255, 0);
+}
+
+.NotActive {
+  color: red;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

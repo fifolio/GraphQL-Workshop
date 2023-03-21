@@ -25,9 +25,10 @@ export default function Users() {
           <tr>
             <th>Id</th>
             <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>1st Name</th>
+            <th>2nd Name</th>
             <th>Favorite Number</th>
+            <th>User Activision</th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +41,13 @@ export default function Users() {
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.favNumber}</td>
+                  <td>
+                    {user.isActive ? (
+                      <b className="Active">Active</b>
+                    ) : (
+                      <b className="NotActive">Not Active</b>
+                    )}
+                  </td>
                 </tr>
               );
             })}
