@@ -8,6 +8,24 @@
 a {
   margin: 0 15px 0 15px;
 }
+table {
+  font-family: arial, sans-serif;
+  width: 100%;
+  margin-top: 12px;
+}
+
+th {
+  background-color: black;
+  padding: 8px 20px;
+  margin: 5px;
+}
+td {
+  font-weight: normal;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+  color: #353535;
+}
 
 .logo {
   height: 6em;

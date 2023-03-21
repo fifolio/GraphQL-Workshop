@@ -6,19 +6,14 @@ const userNotFound = {
   favNumber: -1,
   isActive: false,
 };
-
 module.exports = {
   Query: {
     doesItWork: () => true,
-    // The "parent" argument is the result of the previous resolver, if there is any.
-    // The "args" argument is an object containing any arguments passed to the query
-    // the "models" argument is an object containing any (external) services or models that the resolver needs to perform its task, such as a database or an authentication service.
-    getAllUsers: (models) => {
+    getAllUsers: (parent, args, models) => {
       const { users } = models;
-      console.log(users);
       return users;
     },
-    getUser: (args, models) => {
+    getUser: (parent, args, models) => {
       const { users } = models;
       const { id } = args;
       const user = users.find((u) => u.id == id);
@@ -30,7 +25,7 @@ module.exports = {
     },
   },
   Mutation: {
-    addUser: (args, models) => {
+    addUser: (parent, args, models) => {
       const { users } = models;
       const { id, userName, firstName, lastName, favNumber, isActive } = args;
       const newUser = {
@@ -44,7 +39,7 @@ module.exports = {
       users.push(newUser);
       return true;
     },
-    removeUser: (args, models) => {
+    removeUser: (parent, args, models) => {
       const { users } = models;
       const { id } = args;
       const index = users.findIndex((u) => u.id === Number(id));
@@ -55,7 +50,7 @@ module.exports = {
         return false;
       }
     },
-    editUser: (args, models) => {
+    editUser: (parent, args, models) => {
       const { users } = models;
       const { id, userName, firstName, lastName, favNumber, isActive } = args;
       const index = users.findIndex((u) => u.id === Number(id));
