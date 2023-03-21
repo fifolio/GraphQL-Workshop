@@ -7,8 +7,8 @@ import queries from "../api/queries";
 
 
 export default function SingleUser() {
-// navigate
-const navigate = useNavigate()
+  // navigate
+  const navigate = useNavigate()
 
   const params = useParams();
   const {id} = params;
