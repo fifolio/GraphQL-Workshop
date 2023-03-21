@@ -1,26 +1,14 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import queries from "../api/queries";
 import User from "./User";
 
-const getUsers = gql`
-  query {
-    getAllUsers {
-      id
-      userName
-      firstName
-      lastName
-      favNumber
-      isActive
-    }
-  }
-`;
+export default function Database() {
+  const { getUsers } = queries;
 
-export default function Users() {
   const { loading, data, error } = useQuery(getUsers);
   return (
     <>
       <span>Database</span>
-      {loading && <p>Loading Users ...</p>}
-      {error && <p>Error: {error.message}</p>}
       <table>
         <thead>
           <tr>
@@ -39,6 +27,8 @@ export default function Users() {
             })}
         </tbody>
       </table>
+      {loading && <p>Loading Users ...</p>}
+      {error && <p>Error: {error.message}</p>}
     </>
   );
 }

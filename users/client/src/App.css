@@ -28,7 +28,8 @@ tr:nth-child(even) {
 }
 
 .Active {
-  color: rgb(0, 255, 0);
+  color: rgb(94, 129, 255);
+  text-shadow: #353535 currentColor;
 }
 
 .NotActive {
@@ -42,7 +43,7 @@ tr:nth-child(even) {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #646cff);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
