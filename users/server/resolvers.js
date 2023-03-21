@@ -13,12 +13,12 @@ module.exports = {
     // The "parent" argument is the result of the previous resolver, if there is any.
     // The "args" argument is an object containing any arguments passed to the query
     // the "models" argument is an object containing any (external) services or models that the resolver needs to perform its task, such as a database or an authentication service.
-    getAllUsers: (parent, args, models) => {
+    getAllUsers: (models) => {
       const { users } = models;
       console.log(users);
       return users;
     },
-    getUser: (parent, args, models) => {
+    getUser: (args, models) => {
       const { users } = models;
       const { id } = args;
       const user = users.find((u) => u.id == id);
@@ -30,7 +30,7 @@ module.exports = {
     },
   },
   Mutation: {
-    addUser: (parent, args, models) => {
+    addUser: (args, models) => {
       const { users } = models;
       const { id, userName, firstName, lastName, favNumber, isActive } = args;
       const newUser = {
@@ -44,7 +44,7 @@ module.exports = {
       users.push(newUser);
       return true;
     },
-    removeUser: (parent, args, models) => {
+    removeUser: (args, models) => {
       const { users } = models;
       const { id } = args;
       const index = users.findIndex((u) => u.id === Number(id));
@@ -55,7 +55,7 @@ module.exports = {
         return false;
       }
     },
-    editUser: (parent, args, models) => {
+    editUser: (args, models) => {
       const { users } = models;
       const { id, userName, firstName, lastName, favNumber, isActive } = args;
       const index = users.findIndex((u) => u.id === Number(id));
