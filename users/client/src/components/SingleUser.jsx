@@ -1,5 +1,6 @@
-import { useQuery } from "@apollo/client";
-import {useParams} from 'react-router-dom';
+import { useQuery, useMutation } from "@apollo/client";
+import {redirect, useParams} from 'react-router-dom';
+import mutations from "../api/mutations";
 import queries from "../api/queries";
 
 
@@ -14,8 +15,17 @@ export default function SingleUser() {
     }
   });
 
+  const {removeUser} = mutations;
+  const [removeUserMutationFunc] = useMutation(removeUser)
+
+  // Handle Delete
 const handleDeleteClicked = () => {
-  console.log("Clicked")
+  removeUserMutationFunc({
+    variables: {
+      userID: id
+    }
+  })
+  console.log("Deleted")
 }
 
   return (
