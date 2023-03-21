@@ -13,6 +13,18 @@ const queries = {
       }
     }
   `,
+  getUser: gql`
+    query getUserFunction($userID: ID!){
+      getUser(id: $userID){
+        id
+        userName
+        firstName
+        lastName
+        favNumber
+        isActive 
+      }
+    }
+  `,
 };
 
 export default queries;
