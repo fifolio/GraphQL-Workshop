@@ -1,4 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
+import User from "./User";
 
 const getUsers = gql`
   query {
@@ -34,22 +35,7 @@ export default function Users() {
         <tbody>
           {data &&
             data.getAllUsers.map((user, index) => {
-              return (
-                <tr key={index}>
-                  <td>{user.id}</td>
-                  <td>{user.userName}</td>
-                  <td>{user.firstName}</td>
-                  <td>{user.lastName}</td>
-                  <td>{user.favNumber}</td>
-                  <td>
-                    {user.isActive ? (
-                      <b className="Active">Active</b>
-                    ) : (
-                      <b className="NotActive">Not Active</b>
-                    )}
-                  </td>
-                </tr>
-              );
+              return <User user={user} key={index} />;
             })}
         </tbody>
       </table>
