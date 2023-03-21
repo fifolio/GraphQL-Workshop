@@ -1,11 +1,15 @@
 import { useQuery, useMutation } from "@apollo/client";
-import {redirect, useParams} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {useParams} from 'react-router-dom';
 import mutations from "../api/mutations";
 import queries from "../api/queries";
 
 
 
 export default function SingleUser() {
+// navigate
+const navigate = useNavigate()
+
   const params = useParams();
   const {id} = params;
   const {getUser} = queries
@@ -26,6 +30,7 @@ const handleDeleteClicked = () => {
     }
   })
   console.log("Deleted")
+  navigate('/database')
 }
 
   return (
