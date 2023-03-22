@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import {useParams} from 'react-router-dom';
@@ -37,6 +37,23 @@ const handleDeleteClicked = () => {
   alert("Deleted Successfully")
   navigate('/database')
 }
+
+// Current User State
+const [currentUser, setCurrentUser] = useState({
+  id: 0,
+  userName: "",
+  firstName: "",
+  lastName: "",
+  favNumber: 0,
+  isActive: false
+})
+
+useEffect(() => {
+  if(data){
+    setCurrentUser(data.getUser)
+  }
+}, [data])
+
 
   return (
     <>
@@ -77,7 +94,7 @@ const handleDeleteClicked = () => {
       </div>
       <br />
       <div className="extras">
-        {editClicked && <EditForm />}
+        {editClicked && <EditForm {...currentUser} />}
       </div>
     </>
   );
