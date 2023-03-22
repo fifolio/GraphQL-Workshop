@@ -20,15 +20,15 @@ export default function SingleUser() {
   });
 
   const {removeUser} = mutations;
-  const [removeUserMutationFunc] = useMutation(removeUser)
-
-  // Handle Delete
-const handleDeleteClicked = () => {
-  removeUserMutationFunc({
+  const [removeUserMutationFunc] = useMutation(removeUser, {
     variables: {
       userID: id
     }
   })
+
+  // Handle Delete
+const handleDeleteClicked = () => {
+  removeUserMutationFunc()
   console.log("Deleted")
   navigate('/database')
 }
