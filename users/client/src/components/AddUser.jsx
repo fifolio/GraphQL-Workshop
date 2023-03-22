@@ -1,37 +1,54 @@
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import mutations from '../api/mutations';
+import {useNavigate} from 'react-router-dom';
+
 
 export default function AddUser() {
 
-  
-  
-const [formValues, setFormValues] = useState({
-  userName: "",
-  firstName: "",
-  lastName: "",
-  favNumber: 0,
-  isActive: false,  
-})
-const handleChange = (event) => {
+  const navigate = useNavigate();
+
+  const [formValues, setFormValues] = useState({
+    username: '',
+    firstName: '',
+    lastName: '',
+    favNumber: 0,
+    isActive: false,
+  });
+
+ const handleChange = (event) => {
     const newData = {
       ...formValues,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+    };
+    if (event.target.name === 'isActive') {
+      newData.isActive = !formValues.isActive;
     }
-    if (event.target.name === 'isActive'){
-      newData.isActive = !formValues.isActive
+    setFormValues(newData);
   };
-    setFormValues(newData)
-    console.log("Form Values Added", newData)
-};
 
-const handleSubmit = (event) => {
-  event.preventDefault(); 
-  console.log("New User Submitted", formValues)
-}
+const {addUser: addUserMutation} = mutations;
+const [addUserMutationFunc] = useMutation(addUserMutation);
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); 
+    addUserMutationFunc({
+      variables: {
+      ...formValues,
+      userID: new Date().valueOf(),
+      favNumber: Number(formValues.favNumber)
+     },
+    });
+    console.log("New User Submitted", formValues)
+    navigate('/database');
+  };
+
+
 
   return (
     <>
       <span>Add New User</span>
-      <form action="POST">
+      <form>
         <div>
           <label htmlFor="userName">Username: </label>
           <input type="text" name="userName" value={formValues.userName} onChange={handleChange} />

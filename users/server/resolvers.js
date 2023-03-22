@@ -33,7 +33,7 @@ module.exports = {
         userName,
         firstName,
         lastName,
-        favNumber,
+        favNumber: Number(favNumber),
         isActive,
       };
       users.push(newUser);
