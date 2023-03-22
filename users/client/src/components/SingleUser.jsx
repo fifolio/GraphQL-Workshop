@@ -1,11 +1,16 @@
+import {useState} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import {useParams} from 'react-router-dom';
 import mutations from "../api/mutations";
 import queries from "../api/queries";
-
+import EditForm from './EditForm'
 
 export default function SingleUser() {
+
+  const [editClicked, setEditClicked] = useState(false)
+  
+
   // navigate
   const navigate = useNavigate()
 
@@ -67,8 +72,12 @@ const handleDeleteClicked = () => {
       <br />
       <div>
         <button onClick={handleDeleteClicked} style={{"background": "#DB192F"}}>Delete</button>
-        <button style={{"margin": "0 20px"}}>Edit</button>
+        <button onClick={() => {setEditClicked(!editClicked)}} style={{"margin": "0 20px"}}>Edit</button>
         <button style={{"background": "#00C75D"}}>Save</button>
+      </div>
+      <br />
+      <div className="extras">
+        {editClicked && <EditForm />}
       </div>
     </>
   );
