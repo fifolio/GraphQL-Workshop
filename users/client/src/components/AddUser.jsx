@@ -12,21 +12,31 @@ const [formValues, setFormValues] = useState({
   isActive: false,  
 })
 const handleChange = (event) => {
-  console.log(event.target)
+    const newData = {
+      ...formValues,
+      [event.target.name]: event.target.value
+    }
+    if (event.target.name === 'isActive'){
+      newData.isActive = !formValues.isActive
+  };
+    setFormValues(newData)
+    console.log("Form Values Added", newData)
 };
+
+
 
   return (
     <>
       <span>Add New User</span>
-      <form>
+      <form action="POST">
         <div>
           <label htmlFor="userName">Username: </label>
           <input type="text" name="userName" value={formValues.userName} onChange={handleChange} />
         </div>
 
         <div>
-          <label htmlFor="firstName">Firas Name: </label>
-          <input type="text" name="firsstName" value={formValues.firstName} onChange={handleChange} />
+          <label htmlFor="firstName">First Name: </label>
+          <input type="text" name="firstName" value={formValues.firstName} onChange={handleChange} />
         </div>
 
         <div>
