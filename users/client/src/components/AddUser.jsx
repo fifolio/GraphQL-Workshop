@@ -23,7 +23,10 @@ const handleChange = (event) => {
     console.log("Form Values Added", newData)
 };
 
-
+const handleSubmit = (event) => {
+  event.preventDefault(); 
+  console.log("New User Submitted", formValues)
+}
 
   return (
     <>
@@ -55,7 +58,7 @@ const handleChange = (event) => {
         </div>
 
         <div>
-          <button>Add User</button>
+          <button onClick={handleSubmit}>Add User</button>
         </div>
       </form>
     </>
