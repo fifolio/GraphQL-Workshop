@@ -3,6 +3,9 @@ import queries from "../api/queries";
 import User from "./User";
 
 export default function Database() {
+ 
+
+
   const { getUsers } = queries;
 
   const { loading, data, error } = useQuery(getUsers);

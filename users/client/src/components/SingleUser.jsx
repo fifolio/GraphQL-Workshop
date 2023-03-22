@@ -5,7 +5,6 @@ import mutations from "../api/mutations";
 import queries from "../api/queries";
 
 
-
 export default function SingleUser() {
   // navigate
   const navigate = useNavigate()
@@ -30,6 +29,7 @@ export default function SingleUser() {
 const handleDeleteClicked = () => {
   removeUserMutationFunc()
   console.log("Deleted")
+  alert("Deleted Successfully")
   navigate('/database')
 }
 
