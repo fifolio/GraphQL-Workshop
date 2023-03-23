@@ -36,19 +36,19 @@ export default function EditForm(props) {
   };
 
 const {editUser: editUserMutation} = mutations;
-const [editUserMutationFunc] = useMutation(editUserMutation);
-
-  const handleSubmit = (event) => {
-    event.preventDefault(); 
-    editUserMutationFunc({
+const [editUserMutationFunc] = useMutation(editUserMutation, {
       variables: {
       ...formValues,
       userID: id,
       favNumber: Number(formValues.favNumber)
      },
     });
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); 
+    editUserMutationFunc();
     console.log("New User Submitted", formValues)
-    navigate('/database');
+    navigate(`/database`);
   };
 
 
@@ -79,7 +79,7 @@ const [editUserMutationFunc] = useMutation(editUserMutation);
 
         <div>
           <label htmlFor="isActive">Is User Active? </label>
-          <input type="checkbox" name="isActive" value={formValues.isActive} onChange={handleChange} />
+          <input type="checkbox" name="isActive" value={formValues.isActive} checked={formValues.isActive} onChange={handleChange} />
         </div>
 
         <div>

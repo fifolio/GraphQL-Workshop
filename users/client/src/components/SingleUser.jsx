@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
 import { useQuery, useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
-import {useParams} from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
 import mutations from "../api/mutations";
 import queries from "../api/queries";
 import EditForm from './EditForm'
@@ -12,7 +11,7 @@ export default function SingleUser() {
   
 
   // navigate
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const params = useParams();
   const {id} = params;
@@ -40,12 +39,12 @@ const handleDeleteClicked = () => {
 
 // Current User State
 const [currentUser, setCurrentUser] = useState({
-  id: 0,
-  userName: "",
-  firstName: "",
-  lastName: "",
-  favNumber: 0,
-  isActive: false
+  id: null,
+  userName: null,
+  firstName: null,
+  lastName: null,
+  favNumber: null,
+  isActive: null
 })
 
 useEffect(() => {
